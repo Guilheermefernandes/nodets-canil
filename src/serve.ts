@@ -14,9 +14,11 @@ serve.engine('mustache', mustache());
 
 serve.use(express.static(path.join(__dirname, '../public')));
 
-serve.use(router);
+serve.use((req, res) => {
+    res.render('pages/404');
+})
 
-// Routers
+serve.use(router);
 
 serve.listen(process.env.PORT);
 
